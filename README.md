@@ -1,6 +1,4 @@
-# Welcome to your CDK C# project!
-
-This is a blank project for C# development with CDK.
+# CDK example demonstrating creation of VPC, RDP gateway (bastion), Managed AD and a target windows host.
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
