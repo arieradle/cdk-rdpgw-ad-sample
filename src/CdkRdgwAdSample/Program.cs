@@ -11,6 +11,7 @@ namespace CdkRdgwAdSample
         public static void Main(string[] args)
         {
             string domainName = "mydomain.aws";
+            string keyPairName = "inst-key-pair";
             var env = new Amazon.CDK.Environment { Region = "eu-west-1" };
 
             var app = new App();
@@ -37,12 +38,12 @@ namespace CdkRdgwAdSample
                 Env = env
             });
 
-            var bastionStack = new BastionStack(app, "Bastion-Host", vpc: vpcStack.Vpc, new StackProps
+            var bastionStack = new BastionStack(app, "Bastion-Host", vpc: vpcStack.Vpc, keyPairName, new StackProps
             {
                 Env = env
             });
 
-            var targetInstanceStack = new TargetInstanceStack(app, "Target-Instance", vpc: vpcStack.Vpc, new StackProps
+            var targetInstanceStack = new TargetInstanceStack(app, "Target-Instance", vpc: vpcStack.Vpc, keyPairName, new StackProps
             {
                 Env = env
             });

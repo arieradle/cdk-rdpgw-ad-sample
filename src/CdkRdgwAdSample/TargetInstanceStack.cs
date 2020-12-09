@@ -11,7 +11,7 @@ namespace CdkRdgwAdSample
 
         public SecurityGroup SecurityGroup { get; private set; }
 
-        internal TargetInstanceStack(Construct scope, string id, Vpc vpc, IStackProps props = null) : base(scope, id, props)
+        internal TargetInstanceStack(Construct scope, string id, Vpc vpc, string keyPairName, IStackProps props = null) : base(scope, id, props)
         {
 
             SecurityGroup = new SecurityGroup(this, "TargetInstance-Security-Group", new SecurityGroupProps
@@ -36,6 +36,7 @@ namespace CdkRdgwAdSample
                 MachineImage = new WindowsImage(WindowsVersion.WINDOWS_SERVER_2019_ENGLISH_FULL_BASE),
                 Vpc = vpc,
                 UserData = UserData.Custom(Utils.GetResource("target_instance_user_data.ps1")),
+                KeyName = keyPairName,
                 Role = Role,
                 VpcSubnets = new SubnetSelection { SubnetType = SubnetType.PRIVATE },
                 SecurityGroup = SecurityGroup

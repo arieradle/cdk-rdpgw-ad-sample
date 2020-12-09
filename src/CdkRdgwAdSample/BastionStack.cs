@@ -9,7 +9,7 @@ namespace CdkRdgwAdSample
         public Role Role { get; private set; }
         public Instance_ Bastion { get; private set; }
 
-        internal BastionStack(Construct scope, string id, Vpc vpc, IStackProps props = null) : base(scope, id, props)
+        internal BastionStack(Construct scope, string id, Vpc vpc, string keyPairName, IStackProps props = null) : base(scope, id, props)
         {
 
             Role  = new Role(this, "ec2-bastion-role", new RoleProps{
@@ -24,6 +24,7 @@ namespace CdkRdgwAdSample
                 MachineImage = new WindowsImage(WindowsVersion.WINDOWS_SERVER_2019_ENGLISH_FULL_BASE),
                 Vpc = vpc,
                 UserData = UserData.Custom(Utils.GetResource("bastion_user_data.ps1")),
+                KeyName = keyPairName,
                 Role = Role,
                 VpcSubnets = new SubnetSelection { SubnetType = SubnetType.PUBLIC }
             });
