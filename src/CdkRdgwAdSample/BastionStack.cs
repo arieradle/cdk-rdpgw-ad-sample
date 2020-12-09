@@ -16,7 +16,7 @@ namespace CdkRdgwAdSample
                 AssumedBy = new ServicePrincipal("ec2.amazonaws.com")
             });
 
-            Role.AddManagedPolicy(ManagedPolicy.FromManagedPolicyName(this, "bla", "SecretsManagerReadWrite"));
+            Role.AddManagedPolicy(ManagedPolicy.FromAwsManagedPolicyName("SecretsManagerReadWrite"));
 
             Bastion = new Instance_(this, id, new InstanceProps
             {

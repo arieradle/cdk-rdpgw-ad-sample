@@ -19,7 +19,7 @@ namespace CdkRdgwAdSample
                 Vpc = vpc,
                 AllowAllOutbound = true,
                 Description = "TargetInstance-Security-Group",
-                SecurityGroupName = "sg-" + id
+                SecurityGroupName = "secgroup-" + id
             });
 
 
@@ -28,7 +28,7 @@ namespace CdkRdgwAdSample
                 AssumedBy = new ServicePrincipal("ec2.amazonaws.com")
             });
 
-            Role.AddManagedPolicy(ManagedPolicy.FromManagedPolicyName(this, "bla1", "SecretsManagerReadWrite"));
+            Role.AddManagedPolicy(ManagedPolicy.FromAwsManagedPolicyName("SecretsManagerReadWrite"));
 
             TargetInstance = new Instance_(this, id, new InstanceProps
             {
