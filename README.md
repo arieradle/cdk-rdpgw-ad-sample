@@ -4,6 +4,12 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
 It uses the [.NET Core CLI](https://docs.microsoft.com/dotnet/articles/core/) to compile and execute your project.
 
+## Important Notes
+
+* Please make sure you create keypair named `inst-key-pair` prior to running this example.
+* In this example, the stacks are deployed into `eu-west-1` region.
+* In order to get the domain `Admin` user password to test the RDP login, please exprole the `Secrets Manager` console.
+
 ## Useful commands
 
 * `dotnet build src` compile this app
