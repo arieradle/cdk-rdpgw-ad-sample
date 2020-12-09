@@ -9,6 +9,7 @@ It uses the [.NET Core CLI](https://docs.microsoft.com/dotnet/articles/core/) to
 * Please make sure you create keypair named `inst-key-pair` prior to running this example.
 * In this example, the stacks are deployed into `eu-west-1` region.
 * In order to get the domain `Admin` user password to test the RDP login, please exprole the `Secrets Manager` console.
+* This example was built using CDK v1.76.0
 
 ## Useful commands
 
